@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  currentItem: string = '';
+  removedIndex: number = -1;
+  items: string[] = [];
+
+  addItem(){
+    this.items.push(this.currentItem);
+    this.currentItem = '';
+    console.log(this.items);
+  }
+
+  removeItem(index: number){
+    this.removedIndex = index;
+    setTimeout(()=>{
+      this.items.splice(index,1);
+      this.removedIndex = -1;
+    },1000);
+
+
+
+  }
 }
